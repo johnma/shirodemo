@@ -1,6 +1,3 @@
-# webshiro
-a demo for shiro
-
 The BSD License
 
 Copyright (c) 2012 H57 Consulting
