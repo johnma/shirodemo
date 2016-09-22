@@ -21,6 +21,8 @@
 		<org.mybatis-version>3.0.6</org.mybatis-version>
 		<org.mybatis-spring-version>1.0.2</org.mybatis-spring-version>
 		<org.mybatis-repository-path>/src/main/resources/migrations</org.mybatis-repository-path>
+		<jetty.port>8080</jetty.port>
+		<jetty.stop.port>998</jetty.stop.port>
 	</properties>
 	<dependencies>
 		<!-- Apache Datasource -->
@@ -228,6 +230,7 @@
             </plugin>
 
             <!--debug with jetty-->
+			<!--
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -245,6 +248,21 @@
 					<webAppConfig>
 						<contextPath>/</contextPath>
 					</webAppConfig>
+				</configuration>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.3.0.v20150612</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<httpConnector>
+						<port>${jetty.port}</port>
+						<idleTimeout>60000</idleTimeout>
+					</httpConnector>
+					<stopKey>foo</stopKey>
+					<stopPort>${jetty.stop.port}</stopPort>
 				</configuration>
 			</plugin>
 			<plugin>
